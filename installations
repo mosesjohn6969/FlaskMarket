@@ -1,0 +1,10 @@
+mkdir FlaskMarket       # Creating a project Folder
+pip install flask       # installing Flask Framework
+flask --version         # Check or confirming if Flask was installed correctly
+set FLASK_APP=app.py    # Setting your flask app for execution(export FLASK_APP=app.py for LINUX USERS)
+flask run               # Initiating Execution
+set FLASK_DEBUG=1       # to enable automatic refresh and save changes without having you restart the server all the Time
+pip install flask-sqlalchemy # using SQLALchemy for creating Database
+python                  # to use the Python shell to perform SQL queries and database Operations
+
+from market import db   # creating a DataBase
