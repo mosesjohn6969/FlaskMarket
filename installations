@@ -10,6 +10,8 @@ python                  # to use the Python shell to perform SQL queries and dat
 
 
 pip install email_validator # for emails validations
+pip install flask_bcrypt
+pip install flask_login
 from market import db   # Initializing a database a DataBase
 db.create_all()         # Database
 
