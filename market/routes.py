@@ -71,7 +71,7 @@ def login_page():
         attempted_user = User.query.filter_by(username=form.username.data).first()
         if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
             login_user(attempted_user)
-            flash(f'Success! You logged in as: {attempted_user.username}', category='success')
+            flash(f'Success! You logged in as {attempted_user.username}', category='success')
             return redirect(url_for('market_page'))
         else:
             flash('Username and password are not match! Please try again', category='danger')
@@ -81,5 +81,5 @@ def login_page():
 @app.route('/logout')
 def logout_page():
     logout_user()
-    flash("You've Been Loggged out!", category='info')
+    flash("You've Been Logged out!", category='info')
     return redirect(url_for('home_page'))
