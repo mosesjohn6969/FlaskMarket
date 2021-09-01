@@ -5,14 +5,12 @@
 {% block link %}<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/register.css') }}">{% endblock %}
 {% block content %}
 <body>
-    <form class="form-signin">
+    <form method="POST" class="form-signin" style="color:white">
+      {{ form.hidden_tag() }}
       <div class="text-center mb-4">
           <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
             <h1 class="h3 mb-3 fw-normal">Please sign up</h1>
       </div>
-
-
-
 
       <div class="form-floating" style="color:black; margin-bottom:5px">
           {{ form.username(class="form-control", placeholder="User Name", id="floatingInput", type="label") }}
@@ -43,3 +41,4 @@
     </form>
   </body>
 {% endblock %}
+

@@ -1,11 +1,29 @@
+from flask import redirect, current_app
 from market import db, login_manager, admin, app
 from market import bcrypt
 from flask_login import UserMixin
+from flask_admin.contrib.sqla import ModelView
+import os
+import  secrets
 
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+def save_images(photo):
+    hash_photo = secrets.token_urlsafe(10)
+    file_extension = os.path.splitext(photo.filename)
+    photo_name = hash_photo + file_extension
+    file_path = os.path.join(current_app.root_path, 'static/images', photo_name)
+    photo.save(file_path)
+    return photo_name
+
+
+
+class Person(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(30))
 
 
 class User(db.Model, UserMixin):
@@ -46,7 +64,8 @@ class Item(db.Model):
     name = db.Column(db.String(length=30), nullable=False, unique=True)
     price = db.Column(db.Integer(), nullable=False)
     barcode = db.Column(db.String(length=12), nullable=False, unique=True)
-    description = db.Column(db.String(length=1024), nullable=False, unique=True)
+    description = db.Column(db.String(length=1024), default="image.jpg",  unique=True)
+    img = db.Column(db.String(length=130), nullable=False, unique=True)
     owner = db.Column(db.Integer(), db.ForeignKey("user.id"))
 
     def __repr__(self):
@@ -61,3 +80,8 @@ class Item(db.Model):
         self.owner = None
         user.budget += self.price
         db.session.commit()
+
+
+admin.add_view(ModelView(Person, db.session))
+admin.add_view(ModelView(User, db.session))
+admin.add_view(ModelView(Item, db.session))
