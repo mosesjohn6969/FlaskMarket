@@ -13,6 +13,8 @@ pip install email_validator # for emails validations
 pip install flask_bcrypt
 pip install flask_login
 pip install flask_admin
+pip install Flask-BasicAuth
+pip install flask_security
 from market import db   # Initializing a database a DataBase
 db.create_all()         # Database
 
@@ -33,3 +35,14 @@ for item in Item.query.all():   # querying the entire table using for loop
 Item.query.filter_by(price=500)     # this returns an object of selecting a particular row in the database
 db.drop_all()           # dropping the entire table
 db.session.rollback()   # one step backward on every commit
+
+
+
+
+LINKS
+https://www.youtube.com/watch?v=NYWEf9bZhHQ
+https://www.youtube.com/watch?v=lTLFIe115Pg
+https://www.youtube.com/watch?v=2dEM-s3mRLE&list=RDCMUC-QDfvrRIDB6F0bIO4I4HkQ&index=2
+https://www.youtube.com/watch?v=TLgVEBuQURA&list=RDCMUC-QDfvrRIDB6F0bIO4I4HkQ&index=3
+https://www.youtube.com/watch?v=nQH8zAwJHUE
+https://www.youtube.com/watch?v=lTLFIe115Pg&t=99s

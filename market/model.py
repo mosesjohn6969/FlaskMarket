@@ -1,15 +1,27 @@
-from flask import redirect, current_app
-from market import db, login_manager, admin, app
+from flask import redirect, current_app, url_for, g, request
+from market import db, login_manager, login, app
 from market import bcrypt
-from flask_login import UserMixin
+from flask_login import UserMixin, current_user, login_user
 from flask_admin.contrib.sqla import ModelView
+from flask_admin import AdminIndexView, Admin, expose
 import os
-import  secrets
+import secrets
+
+
+@app.before_request
+def before_req():
+    g.user = current_user
+
+
+@login.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
 
 def save_images(photo):
     hash_photo = secrets.token_urlsafe(10)
@@ -20,15 +32,40 @@ def save_images(photo):
     return photo_name
 
 
-
 class Person(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30))
 
 
+class MyModelView(ModelView):
+    def is_accessible(self):
+        return current_user.is_authenticated
+
+    def inaccessible_callback(self, name, **kwargs):
+        return redirect(url_for('login'))
+
+
+class MyAdminIndexView(AdminIndexView):
+    @expose("/")
+    def index(self):
+        if g.user.is_authenticated:
+            return super(MyAdminIndexView, self).index()
+        next_url = request.endpoint
+        login_url = '%s?next=%s' % (url_for("login"), next_url)
+        return redirect(login_url)
+
+    def is_accessible(self):
+        return current_user.is_authenticated
+
+
+admin = Admin(app, name="Moses's store", template_mode='bootstrap4',
+              index_view=MyAdminIndexView(name="DASHBOARD", menu_icon_type="fa", menu_icon_value="fa-home"))
+
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer(), primary_key=True)
     username = db.Column(db.String(length=30), nullable=False, unique=True)
+    # full_name = db.Column(db.String(length=35), nullable=False, unique=True)
     email_address = db.Column(db.String(length=50), nullable=False, unique=True)
     password_hash = db.Column(db.String(length=60), nullable=False)
     budget = db.Column(db.Integer(), nullable=False, default=100000)
@@ -64,8 +101,11 @@ class Item(db.Model):
     name = db.Column(db.String(length=30), nullable=False, unique=True)
     price = db.Column(db.Integer(), nullable=False)
     barcode = db.Column(db.String(length=12), nullable=False, unique=True)
-    description = db.Column(db.String(length=1024), default="image.jpg",  unique=True)
-    img = db.Column(db.String(length=130), nullable=False, unique=True)
+    description = db.Column(db.String(length=1024), nullable=False, unique=True)
+    # category = db.Column(db.String(length=130), nullable=False, unique=True)
+    # color = db.Column(db.String(length=130), nullable=False, unique=True)
+    # quantity = db.Column(db.String(length=130), nullable=False, unique=True)
+    # img_path = db.Column(db.String(length=130),  default="image.jpg", unique=True)
     owner = db.Column(db.Integer(), db.ForeignKey("user.id"))
 
     def __repr__(self):
@@ -82,6 +122,6 @@ class Item(db.Model):
         db.session.commit()
 
 
-admin.add_view(ModelView(Person, db.session))
-admin.add_view(ModelView(User, db.session))
-admin.add_view(ModelView(Item, db.session))
+admin.add_view(MyModelView(Person, db.session, name="PERSON", menu_icon_type="fa", menu_icon_value="fa-users"))
+admin.add_view(MyModelView(User, db.session, name="USER", menu_icon_type="fa", menu_icon_value="fa-user-circle"))
+admin.add_view(MyModelView(Item, db.session, name="PRODUCTS", menu_icon_type="fa", menu_icon_value="fa-shopping-cart"))

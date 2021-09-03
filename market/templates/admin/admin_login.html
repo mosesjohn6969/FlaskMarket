@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Login Page{% endblock %}
+{% block title %} Admin Login Page{% endblock %}
 
 {% block link %}<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/signin.css') }}">{% endblock %}
 
@@ -29,7 +29,7 @@
       <form method="POST" class="form-signin" style="color:white">
           {{ form.hidden_tag() }}
                 <img class="mb-4" src="{{url_for('static', filename='images/auth/Login.svg')}}"  alt="" width="200" height="200">
-                <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+                <h1 class="h3 mb-3 fw-normal">Please sign in as Admin</h1>
 
                 <div class="form-floating" style="color:black; margin-bottom:5px">
                     {{ form.username(class="form-control", placeholder="User Name", id="floatingInput", type="label") }}
@@ -41,9 +41,6 @@
                   <label for="floatingPassword">Password</label>
                 </div>
 
-                <div class="checkbox mb-3">
-                   <p class="text-center">Don't have an account? <a class="btn btn-sm btn-secondary" href="{{ url_for('register_page') }}">Register</a></p>
-                </div>
                 {{ form.submit(class="w-100 btn btn-lg btn-primary") }}
                 <p class="mt-5 mb-3 text-muted">&copy; 2020–2021</p>
 
