@@ -1,12 +1,8 @@
-
-
 {% extends 'base.html' %}
-{% block title %}
-Market Page
-{% endblock %}
-{% block table %}
+{% block title %}Market Page{% endblock %}
 
-<div class="row" style="margin-top:20px; margin-left:20px; width:90%">
+{% block table %}
+<div class="row" style="margin-top:200px; margin-left:20px; width:90%">
    <div class="col-8">
       <h2>AVAILABLE ITEMS ON THE MARKET</h2>
       <p>Click on one of the items to start buying</p>
@@ -16,10 +12,10 @@ Market Page
             <tr>
                <!-- Your Columns HERE -->
                <th scope="col">ID</th>
-               <th class="text-center" scope="col">NAME</th>
-               <th class="text-center" scope="col">BARCODE</th>
-               <th class="text-center" scope="col">PRICE</th>
-               <th class="text-center" scope="col">OPTIONS</th>
+               <th scope="col">NAME</th>
+               <th scope="col">BARCODE</th>
+               <th scope="col">PRICE</th>
+               <th scope="col">OPTIONS</th>
             </tr>
          </thead>
          <tbody>
@@ -28,10 +24,10 @@ Market Page
             {% include 'includes/items_modals.html' %}
             <tr>
                <td>{{item.id}}</td>
-               <td class="text-center">{{item.name}}</td>
-               <td class="text-center">{{item.barcode}}</td>
-               <td class="text-center">₦{{item.price}}</td>
-               <td class="text-center">
+               <td>{{item.name}}</td>
+               <td>{{item.barcode}}</td>
+               <td>₦{{item.price}}</td>
+               <td>
                   <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">More Info</button>
                   <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Purchase this item</button>
                </td>
@@ -40,7 +36,7 @@ Market Page
          </tbody>
       </table>
    </div>
-   <div class="col-4">
+   <div class="col-4" style="background-color:grey">
       <h2>OWNED ITEMS</h2>
       <p>Click on sell items to put an item back on the Market</p>
       <br>
@@ -57,7 +53,7 @@ Market Page
                               Sell this Item
                           </button>
                           <p class="card-text"><strong>
-                              This item costs {{ owned_item.price }}$
+                              This item costs ₦{{ owned_item.price }}
                           </strong></p>
                       </div>
                   </div>

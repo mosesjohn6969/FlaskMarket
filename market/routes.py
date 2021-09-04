@@ -9,20 +9,11 @@ from flask_login import login_user, logout_user, login_required, current_user
 @app.route('/')
 @app.route('/home')
 def home_page():
-    return render_template('home.html')
-
-
-@app.route('/login')
-def login():
-    user = User.query.get(1)
-    login_user(user)
-    return 'Logged in!'
-
-
-@app.route('/logout')
-def logout():
-    logout_user()
-    return 'Logged out!'
+    purchase_form = PurchaseItemForm()
+    selling_form = SellItemForm()
+    items = Item.query.filter_by(owner=None)
+    owned_items = Item.query.filter_by(owner=current_user.id)
+    return render_template('home.html', items=items, purchase_form=purchase_form, owned_items=owned_items, selling_form=selling_form)
 
 
 @app.route('/market', methods=['GET', 'POST'])
@@ -47,8 +38,7 @@ def market_page():
         if s_item_object:
             if current_user.can_sell(s_item_object):
                 s_item_object.sell(current_user)
-                flash(f'Congratulations! you Sold {s_item_object.name} Back to market for ₦{s_item_object.price}',
-                      category="success")
+                flash(f'Congratulations! you Sold {s_item_object.name} Back to market for ₦{s_item_object.price}', category="success")
             else:
                 flash(f"Unfortunately, Something Went Wrong with Sell {s_item_object.name}", category="danger")
 
@@ -57,16 +47,17 @@ def market_page():
     if request.method == "GET":
         items = Item.query.filter_by(owner=None)
         owned_items = Item.query.filter_by(owner=current_user.id)
-        return render_template('market.html', items=items, purchase_form=purchase_form, owned_items=owned_items,
-                               selling_form=selling_form)
+        return render_template('market.html', items=items, purchase_form=purchase_form, owned_items=owned_items, selling_form=selling_form)
 
 
 @app.route('/register', methods=['GET', 'POST'])
 def register_page():
     form = RegisterForm()
     if form.validate_on_submit():
-        user_to_create = User(username=form.username.data,
+        user_to_create = User(full_name=form.full_name.data,
+                              username=form.username.data,
                               email_address=form.email_address.data,
+                              gender=form.gender.data,
                               password=form.password1.data)
         db.session.add(user_to_create)
         db.session.commit()
@@ -83,23 +74,14 @@ def register_page():
 def login_page():
     form = LoginForm()
     if form.validate_on_submit():
-        attempted_user = User.query.filter_by(username=form.username.data).first()
+        attempted_user = User.query.filter_by(email_address=form.email_address.data).first()
         if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
             login_user(attempted_user)
             flash(f'Success! You logged in as {attempted_user.username}', category='success')
             return redirect(url_for('market_page'))
         else:
             flash('Username and password are not match! Please try again', category='danger')
-
-    fall_back = url_for('admin.index')
-    destination = request.args.get('next')
-
-    try:
-        destination_url = url_for(destination)
-        return render_template('login.html', form=form)
-    except:
-        return render_template('login.html', form=form)
-
+    return render_template('login.html', form=form)
 
 
 @app.route('/logout')

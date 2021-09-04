@@ -57,7 +57,7 @@
                   </a>
                </li>
                <li class="nav-item">
-                  <a class="nav-link" >Welcome, {{ current_user.username }}</a>
+                  <a class="nav-link" >Welcome, {{ current_user.full_name }}</a>
                </li>
                <li class="nav-item">
                   <a class="btn btn-md btn-danger center" href="{{ url_for('logout_page') }}">Logout</a>
@@ -97,7 +97,10 @@
       </h1>
       {% block table %}
       {% endblock %}
+
       {% block content %}
+         {% block card %}
+         {% endblock %}
       {% endblock %}
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -108,14 +111,15 @@
       <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
       <!-- Latest compiled and minified JavaScript -->
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-      <script>
-         {% block script %}
-             window.setTimeout(function() {
+
+      <script type="text/javascript">
+         window.setTimeout(function() {
              $(".alert").fadeTo(500, 0).slideUp(500, function(){
-                 $(this).remove();});
-             }, 5000);
-         {% endblock %}
-      </script>
+                 $(this).remove();
+             });
+         }, 2000);
+       </script>
+
    </body>
    <style>
       body {

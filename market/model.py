@@ -7,16 +7,9 @@ from flask_admin import AdminIndexView, Admin, expose
 import os
 import secrets
 
-
-@app.before_request
-def before_req():
-    g.user = current_user
-
-
 @login.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
-
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -46,14 +39,6 @@ class MyModelView(ModelView):
 
 
 class MyAdminIndexView(AdminIndexView):
-    @expose("/")
-    def index(self):
-        if g.user.is_authenticated:
-            return super(MyAdminIndexView, self).index()
-        next_url = request.endpoint
-        login_url = '%s?next=%s' % (url_for("login"), next_url)
-        return redirect(login_url)
-
     def is_accessible(self):
         return current_user.is_authenticated
 
@@ -64,10 +49,12 @@ admin = Admin(app, name="Moses's store", template_mode='bootstrap4',
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer(), primary_key=True)
+    user_type = db.Column(db.Enum("1", "2", "3"), nullable=False, default="2")
     username = db.Column(db.String(length=30), nullable=False, unique=True)
-    # full_name = db.Column(db.String(length=35), nullable=False, unique=True)
+    full_name = db.Column(db.String(length=40), nullable=False)
     email_address = db.Column(db.String(length=50), nullable=False, unique=True)
     password_hash = db.Column(db.String(length=60), nullable=False)
+    gender = db.Column(db.Enum("Male",  "Female"), nullable=False)
     budget = db.Column(db.Integer(), nullable=False, default=100000)
     items = db.relationship('Item', backref='owned_user', lazy=True)
 
@@ -102,10 +89,10 @@ class Item(db.Model):
     price = db.Column(db.Integer(), nullable=False)
     barcode = db.Column(db.String(length=12), nullable=False, unique=True)
     description = db.Column(db.String(length=1024), nullable=False, unique=True)
-    # category = db.Column(db.String(length=130), nullable=False, unique=True)
-    # color = db.Column(db.String(length=130), nullable=False, unique=True)
-    # quantity = db.Column(db.String(length=130), nullable=False, unique=True)
-    # img_path = db.Column(db.String(length=130),  default="image.jpg", unique=True)
+    category = db.Column(db.Enum("Clothes", "Phone and Laptop", "Home appliances", "Bags", "Shoes", "Books", "Travelling"), nullable=False)
+    color = db.Column(db.Enum("Red", "Blue", "Green", "Yellow", "Pink", "White", "Black", "Purple", "Indigo", "Grey", "Orange"), nullable=False)
+    quantity = db.Column(db.Integer(), nullable=False)
+    img_path = db.Column(db.String(length=130),  default="technoF9plus.jpg", unique=True)
     owner = db.Column(db.Integer(), db.ForeignKey("user.id"))
 
     def __repr__(self):

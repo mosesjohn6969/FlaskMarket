@@ -38,7 +38,6 @@ db.session.rollback()   # one step backward on every commit
 
 
 
-
 LINKS
 https://www.youtube.com/watch?v=NYWEf9bZhHQ
 https://www.youtube.com/watch?v=lTLFIe115Pg

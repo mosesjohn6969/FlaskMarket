@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
+from wtforms import StringField, PasswordField, SubmitField, SelectField
 from wtforms.validators import Length, EqualTo, Email, DataRequired, ValidationError
 from market.model import User
 
@@ -16,6 +16,8 @@ class RegisterForm(FlaskForm):
         if email_address:
             raise ValidationError('Email Address already Exists! Please try a different Email')
 
+    full_name = StringField(label="Full Name:", validators=[Length(min=6, max=30), DataRequired()])
+    gender = SelectField(u'Select Gender', default="Male", choices=["Male", "Female"])
     username = StringField(label="User Name:", validators=[Length(min=3, max=30), DataRequired()])
     email_address = StringField(label="Email Address:", validators=[Email(), DataRequired()])
     password1 = PasswordField(label="Password:", validators=[Length(min=6), DataRequired()])
@@ -24,7 +26,7 @@ class RegisterForm(FlaskForm):
 
 
 class LoginForm(FlaskForm):
-    username = StringField(label="User Name:", validators=[DataRequired()])
+    email_address = StringField(label="Email Address:", validators=[DataRequired()])
     password = PasswordField(label="Password:", validators=[DataRequired()])
     submit = SubmitField(label="Sign in")
 

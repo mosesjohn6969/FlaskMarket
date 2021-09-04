@@ -145,15 +145,14 @@
                     $('#sidebar').toggleClass('active');
                 });
             });
-        </script>
+    </script>
 
     {% if admin_view.extra_js %}
-
-
         {% for js_url in admin_view.extra_js %}
             <script src="{{ js_url }}" type="text/javascript"></script>
         {% endfor %}
     {% endif %}
+
 {% endblock %}
 
     {% block tail %}
