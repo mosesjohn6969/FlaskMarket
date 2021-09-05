@@ -2,10 +2,10 @@
 {% block title %}Market Page{% endblock %}
 
 {% block table %}
-<div class="row" style="margin-top:200px; margin-left:20px; width:90%">
-   <div class="col-8">
-      <h2>AVAILABLE ITEMS ON THE MARKET</h2>
-      <p>Click on one of the items to start buying</p>
+<div class="row" style="margin-top:200px; margin-left:60px; margin-right:60px; padding-left:60px; padding-right:60px" >
+   <div class="col-8" style="background-color:#014421; Padding-top:90px; padding-left:60px">
+      <h2>ITEMS IN THE CART</h2>
+      <p>Click on one of the items to Own Them</p>
       <br>
       <table class="table table-hover table-dark">
          <thead>
@@ -29,14 +29,14 @@
                <td>₦{{item.price}}</td>
                <td>
                   <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#Modal-MoreInfo-{{ item.id }}">More Info</button>
-                  <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Purchase this item</button>
+                  <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#Modal-PurchaseConfirm-{{ item.id }}">Owned this item</button>
                </td>
             </tr>
             {% endfor %}
          </tbody>
       </table>
    </div>
-   <div class="col-4" style="background-color:grey">
+   <div class="col-4" style="background-color:#004B49; Padding-top:90px; padding-right:60px">
       <h2>OWNED ITEMS</h2>
       <p>Click on sell items to put an item back on the Market</p>
       <br>

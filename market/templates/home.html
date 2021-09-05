@@ -20,46 +20,47 @@
 
 
 {% block content %}
-<div class="container-fluid 50" style="width:100%; height:450px;">
+<div class="container-fluid">
 <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
-      <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="3" aria-label="Slide 4"></button>
   </div>
   <div class="carousel-inner">
-    <div class="carousel-item active" data-bs-interval="10000">
+    <div class="carousel-item active" data-bs-interval="4000">
       <img src="{{url_for('static', filename='images/slider_1.jpg')}}" height="200" class="d-block w-100" alt="...">
 
     </div>
-    <div class="carousel-item" data-bs-interval="2000">
+    <div class="carousel-item" data-bs-interval="4000">
       <img src="{{url_for('static', filename='images/img5.jpg')}}" height="200" class="d-block w-100" alt="...">
 
     </div>
-    <div class="carousel-item">
+    <div class="carousel-item" data-bs-interval="4000">
       <img src="{{url_for('static', filename='images/mouse.jpg')}}" height="200" class="d-block w-100" alt="...">
 
     </div>
-      <div class="carousel-item">
+      <div class="carousel-item" data-bs-interval="4000">
       <img src="{{url_for('static', filename='images/img7.jpg')}}" height="200" class="d-block w-100" alt="...">
 
     </div>
   </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev" data-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Previous</span>
   </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next" data-slide="next">
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="visually-hidden">Next</span>
   </button>
 </div>
+
 </div>
 
 
 
-<div style="margin-right:120px; margin-left:120px; border-radius:30px">
+<div class="container-xl">
    <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark" style="color:white">
          <div class="col-md-5 p-lg-5 mx-auto my-5">
             <h1 class="display-4 font-weight-normal">Kicks-Bay Shoes-Way</h1>
@@ -72,7 +73,7 @@
 </div>
 
 
-<div style="margin-right:300px; margin-left:300px; margin-top:100px">
+<div class="container-xl">
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <a class="nav-link active" aria-current="page" href="#">All Items</a>
@@ -80,30 +81,33 @@
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Clothes</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <li><a class="dropdown-item" href="#">Men</a></li>
+          <li><a class="dropdown-item" href="#">Women</a></li>
+          <li><a class="dropdown-item" href="#">Children</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Separated link</a></li>
+          <li><a class="dropdown-item" href="#">All Items in this Category</a></li>
         </ul>
       </li>
 
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Phones and Laptops</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
+          <li><a class="dropdown-item" href="#">HP & Dell</a></li>
+          <li><a class="dropdown-item" href="#">Samsung & Iphone</a></li>
+          <li><a class="dropdown-item" href="#">Infinix & Techno</a></li>
+          <li><a class="dropdown-item" href="#">Toshiba</a></li>
+          <li><a class="dropdown-item" href="#">huawei</a></li>
+          <li><a class="dropdown-item" href="#">huawei</a></li>
           <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Separated link</a></li>
+          <li><a class="dropdown-item" href="#">All Items in this Category</a></li>
         </ul>
       </li>
 
         <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Dropdown</a>
+        <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Bags and Shoes</a>
         <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
+          <li><a class="dropdown-item" href="#">Nike</a></li>
+          <li><a class="dropdown-item" href="#">TimberLand</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li><hr class="dropdown-divider"></li>
           <li><a class="dropdown-item" href="#">Separated link</a></li>
@@ -130,52 +134,45 @@
 </div>
 
 
-<div style="margin-right:300px; margin-left:300px">
+<div class="container-xl">
 
+        <div class="row row-cols-1 row-cols-md-4 g-4" style=" margin-top:40px; margin-bottom:80px">
+        {% for item in items %}
+        {% include 'includes/items_modals.html' %}
 
-    {% block card %}
-
-    {% for item in items %}
-    {% include 'includes/items_modals.html' %}
-
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-
-            <div class="col">
-            <div class="card bg-dark" style="width: 18rem; margin-top:20px">
-                <img src="{{url_for('static', filename='images/banner_1.jpg')}}" class="card-img-top" alt="...">
+            <div class="card-deck"  style="width:250px; height:300px">
+            <div class="card bg-dark" style="width: 18rem">
+                <img src = "{{ url_for('static', filename='images/' + item.img_path) }}" style="height:130px" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{item.name}}</h5>
-                    <p class="card-text">{{item.description}}</p>
-                    <a href="#" class="btn btn-primary">Add to B-Market</a>
+                    <h5 class="card-title" >{{item.name}}</h5>
+                    <p class="card-text" style="color:green; font-weight:bold">₦{{item.price}}</p>
+                    <a href="#" class="btn btn-primary">Add to Cart</a>
                 </div>
             </div>
             </div>
-    {% endfor %}
+        {% endfor %}
 
-
-        <div class="col">
-        <div class="card bg-dark" style="width: 18rem; margin-top:20px">
-            <img src="{{url_for('static', filename='images/banner_1.jpg')}}" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Card title</h5>
-                <p class="card-text">Some quick example text.</p>
-                <a href="#" class="btn btn-primary">Add to Market</a>
-            </div>
-        </div>
-        </div>
+    <div class="container-fluid">
+        <ul class="pagination pagination-lg">
+          <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item"><a class="page-link" href="#">4</a></li>
+          <li class="page-item"><a class="page-link" href="#">5</a></li>
+          <li class="page-item"><a class="page-link" href="#">6</a></li>
+          <li class="page-item"><a class="page-link" href="#">7</a></li>
+          <li class="page-item"><a class="page-link" href="#">8</a></li>
+          <li class="page-item"><a class="page-link" href="#">9</a></li>
+          <li class="page-item"><a class="page-link" href="#">10</a></li>
+          <li class="page-item"><a class="page-link" href="#">11</a></li>
+          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </div>
 
     </div>
-    {% endblock %}
 
-   <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-dark" style="color:white">
-      <div class="col-md-5 p-lg-5 mx-auto my-5">
-         <h1 class="display-4 font-weight-normal">Shoes-Bay Kicks-Bay Market</h1>
-         <p class="lead font-weight-normal">Start purchasing products by clicking the link below</p>
-         <a class="btn btn-primary" href="{{ url_for('market_page') }}">Get Started</a>
-      </div>
-      <div class="product-device box-shadow d-none d-md-block"></div>
-      <div class="product-device product-device-2 box-shadow d-none d-md-block"></div>
-   </div>
+
    </div>
 
 
@@ -191,25 +188,25 @@
     <div class="row">
       <div class="col-lg-4">
 <!--        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></svg>-->
-          <img class="bd-placeholder-img rounded-circle" src="{{url_for('static', filename='images/auth/Login.svg')}}"  alt="" width="140" height="140">
+          <img class="bd-placeholder-img rounded-circle" src="{{url_for('static', filename='images/undraw_true_friends_c94g.svg')}}"  alt="" width="140" height="140">
 
-        <h2>Heading</h2>
+        <h2>Kids Fashion</h2>
         <p>Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
         <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
 <!--        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>-->
-          <img class="bd-placeholder-img rounded-circle" src="{{url_for('static', filename='images/auth/Login.svg')}}"  alt="" width="140" height="140">
+          <img class="bd-placeholder-img rounded-circle" src="{{url_for('static', filename='images/undraw_printing_invoices_5r4r.svg')}}"  alt="" width="140" height="140">
 
-        <h2>Heading</h2>
+        <h2>Back to School</h2>
         <p>Another exciting bit of representative placeholder content. This time, we've moved on to the second column.</p>
         <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
       <div class="col-lg-4">
 <!--        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>-->
-          <img class="bd-placeholder-img rounded-circle" src="{{url_for('static', filename='images/auth/Login.svg')}}"  alt="" width="140" height="140">
+          <img class="bd-placeholder-img rounded-circle" src="{{url_for('static', filename='images/undraw_girl_just_wanna_have_fun_9d5u.svg')}}"  alt="" width="140" height="140">
 
-        <h2>Heading</h2>
+        <h2>Girls Fashion</h2>
         <p>And lastly this, the third column of representative placeholder content.</p>
         <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
       </div><!-- /.col-lg-4 -->
@@ -222,12 +219,12 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It’ll blow your mind.</span></h2>
+        <h2 class="featurette-heading">Absolutely Free Shipping. <span class="text-muted">It’ll blow your mind.</span></h2>
         <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
       </div>
       <div class="col-md-5">
 <!--        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>-->
-        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{url_for('static', filename='images/auth/Login.svg')}}"  alt="" width="500" height="500" aria-label="Placeholder: 500x500">
+        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{url_for('static', filename='images/undraw_shopping_app_flsj.svg')}}"  alt="" width="500" height="500" aria-label="Placeholder: 500x500">
 
       </div>
     </div>
@@ -241,7 +238,7 @@
       </div>
       <div class="col-md-5 order-md-1">
 <!--        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>-->
-         <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{url_for('static', filename='images/auth/Login.svg')}}"  alt="" width="500" height="500" aria-label="Placeholder: 500x500">
+         <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{url_for('static', filename='images/undraw_printing_invoices_5r4r.svg')}}"  alt="" width="500" height="500" aria-label="Placeholder: 500x500">
 
       </div>
     </div>
@@ -250,12 +247,12 @@
 
     <div class="row featurette">
       <div class="col-md-7">
-        <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+        <h2 class="featurette-heading">Express Payment. <span class="text-muted">it's a Checkmate.</span></h2>
         <p class="lead">And yes, this is the last block of representative placeholder content. Again, not really intended to be actually read, simply here to give you a better view of what this would look like with some actual content. Your content.</p>
       </div>
       <div class="col-md-5">
 <!--        <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg>-->
-         <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{url_for('static', filename='images/auth/Login.svg')}}"  alt="" width="500" height="500" aria-label="Placeholder: 500x500">
+         <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{url_for('static', filename='images/undraw_stripe_payments_o7aw.svg')}}"  alt="" width="500" height="500" aria-label="Placeholder: 500x500">
 
       </div>
     </div>
@@ -283,35 +280,34 @@
   <footer class="py-5">
     <div class="row">
       <div class="col-2">
-        <h5>Section</h5>
+        <h5>Lets Help You</h5>
+        <ul class="nav flex-column">
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Help Center</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">How to shop with us</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Delivery </a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Timeline</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Report a Product</a></li>
+        </ul>
+      </div>
+
+      <div class="col-2">
+        <h5>About us</h5>
         <ul class="nav flex-column">
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Terms and Conditions</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
           <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
         </ul>
       </div>
 
       <div class="col-2">
-        <h5>Section</h5>
+        <h5>Make money</h5>
         <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
-        </ul>
-      </div>
-
-      <div class="col-2">
-        <h5>Section</h5>
-        <ul class="nav flex-column">
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Home</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Features</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Pricing</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">FAQs</a></li>
-          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">About</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Join our DA Academy</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Become a Vendor Service Provider</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Become a Logistic Partner</a></li>
+          <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">Join our KLO Academy</a></li>
         </ul>
       </div>
 

@@ -92,7 +92,7 @@ class Item(db.Model):
     category = db.Column(db.Enum("Clothes", "Phone and Laptop", "Home appliances", "Bags", "Shoes", "Books", "Travelling"), nullable=False)
     color = db.Column(db.Enum("Red", "Blue", "Green", "Yellow", "Pink", "White", "Black", "Purple", "Indigo", "Grey", "Orange"), nullable=False)
     quantity = db.Column(db.Integer(), nullable=False)
-    img_path = db.Column(db.String(length=130),  default="technoF9plus.jpg", unique=True)
+    img_path = db.Column(db.String(length=130),  default="image.jpg", unique=True)
     owner = db.Column(db.Integer(), db.ForeignKey("user.id"))
 
     def __repr__(self):

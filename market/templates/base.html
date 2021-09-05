@@ -34,7 +34,8 @@
       </style>
    </head>
    <body>
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top" style="padding-right: 100px; padding-left:100px" >
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+
          <a class="navbar-brand" href="{{ url_for('home_page') }}">Kick-Bay</a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
          <span class="navbar-toggler-icon"></span>
@@ -87,10 +88,11 @@
             {{message}}
          </div>
 
-      </div>
+
       {% endfor %}
       {% endif %}
       {% endwith %}
+         </div>
       <h1>
          {% block heading %}
          {% endblock %}
@@ -99,8 +101,7 @@
       {% endblock %}
 
       {% block content %}
-         {% block card %}
-         {% endblock %}
+
       {% endblock %}
       <!-- Optional JavaScript -->
       <!-- jQuery first, then Popper.js, then Bootstrap JS -->

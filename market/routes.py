@@ -13,7 +13,10 @@ def home_page():
     selling_form = SellItemForm()
     items = Item.query.filter_by(owner=None)
     owned_items = Item.query.filter_by(owner=current_user.id)
-    return render_template('home.html', items=items, purchase_form=purchase_form, owned_items=owned_items, selling_form=selling_form)
+    return render_template('home.html', items=items, purchase_form=purchase_form,
+                           selling_form=selling_form)
+    # return render_template('home.html', items=items, purchase_form=purchase_form, owned_items=owned_items,
+    #                        selling_form=selling_form)
 
 
 @app.route('/market', methods=['GET', 'POST'])
@@ -38,7 +41,8 @@ def market_page():
         if s_item_object:
             if current_user.can_sell(s_item_object):
                 s_item_object.sell(current_user)
-                flash(f'Congratulations! you Sold {s_item_object.name} Back to market for ₦{s_item_object.price}', category="success")
+                flash(f'Congratulations! you Sold {s_item_object.name} Back to market for ₦{s_item_object.price}',
+                      category="success")
             else:
                 flash(f"Unfortunately, Something Went Wrong with Sell {s_item_object.name}", category="danger")
 
@@ -47,7 +51,8 @@ def market_page():
     if request.method == "GET":
         items = Item.query.filter_by(owner=None)
         owned_items = Item.query.filter_by(owner=current_user.id)
-        return render_template('market.html', items=items, purchase_form=purchase_form, owned_items=owned_items, selling_form=selling_form)
+        return render_template('market.html', items=items, purchase_form=purchase_form, owned_items=owned_items,
+                               selling_form=selling_form)
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -88,4 +93,5 @@ def login_page():
 def logout_page():
     logout_user()
     flash("You've Been Logged out!", category='info')
-    return redirect(url_for('home_page'))
+    return redirect(url_for("home_page"))
+
