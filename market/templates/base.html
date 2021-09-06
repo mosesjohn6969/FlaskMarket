@@ -34,7 +34,9 @@
       </style>
    </head>
    <body>
+
       <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+         <div class="container-xl">
 
          <a class="navbar-brand" href="{{ url_for('home_page') }}">Kick-Bay</a>
          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
@@ -75,7 +77,9 @@
             </ul>
             {% endif %}
          </div>
+             </div>
       </nav>
+
       <div style="margin-top:3%">
       {% with messages = get_flashed_messages(with_categories=true) %}
       {% if messages %}

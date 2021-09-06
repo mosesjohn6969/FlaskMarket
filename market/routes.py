@@ -12,7 +12,7 @@ def home_page():
     purchase_form = PurchaseItemForm()
     selling_form = SellItemForm()
     items = Item.query.filter_by(owner=None)
-    owned_items = Item.query.filter_by(owner=current_user.id)
+    # owned_items = Item.query.filter_by(owner=current_user.id)
     return render_template('home.html', items=items, purchase_form=purchase_form,
                            selling_form=selling_form)
     # return render_template('home.html', items=items, purchase_form=purchase_form, owned_items=owned_items,
