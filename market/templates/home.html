@@ -173,7 +173,7 @@
 
             <div class="card-deck"  style="width:250px; height:300px">
             <div class="card bg-dark" style="width: 18rem">
-                <img src = "{{ url_for('static', filename='images/' + item.img_path) }}" style="height:130px" class="card-img-top" alt="...">
+                <img src = "{{ url_for('static', filename='images/' + item.img_path) }}" style="height:130px" class="card-img-top img-fluid" alt="...">
                 <div class="card-body">
                     <h5 class="card-title" >{{item.name}}</h5>
                     <p class="card-text" style="color:green; font-weight:bold">₦{{item.price}}</p>
