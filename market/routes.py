@@ -9,13 +9,12 @@ from flask_login import login_user, logout_user, login_required, current_user
 @app.route('/')
 @app.route('/home')
 def home_page():
-    # purchase_form = PurchaseItemForm()
-    # selling_form = SellItemForm()
-    # items = Item.query.filter_by(owner=None)
-    # # owned_items = Item.query.filter_by(owner=current_user.id)
-    return render_template('home.html')
-    # return render_template('home.html', items=items, purchase_form=purchase_form, owned_items=owned_items,
-    #                        selling_form=selling_form)
+    purchase_form = PurchaseItemForm()
+    selling_form = SellItemForm()
+    items = Item.query.filter_by(owner=None)
+    owned_items = Item.query.filter_by(owner=current_user.id)
+    # return render_template('home.html')
+    return render_template('home.html', items=items, purchase_form=purchase_form, owned_items=owned_items, selling_form=selling_form)
 
 
 @app.route('/admin', methods=['GET', 'POST'])
