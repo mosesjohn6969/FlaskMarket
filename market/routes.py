@@ -9,14 +9,18 @@ from flask_login import login_user, logout_user, login_required, current_user
 @app.route('/')
 @app.route('/home')
 def home_page():
-    purchase_form = PurchaseItemForm()
-    selling_form = SellItemForm()
-    items = Item.query.filter_by(owner=None)
-    # owned_items = Item.query.filter_by(owner=current_user.id)
-    return render_template('home.html', items=items, purchase_form=purchase_form,
-                           selling_form=selling_form)
+    # purchase_form = PurchaseItemForm()
+    # selling_form = SellItemForm()
+    # items = Item.query.filter_by(owner=None)
+    # # owned_items = Item.query.filter_by(owner=current_user.id)
+    return render_template('home.html')
     # return render_template('home.html', items=items, purchase_form=purchase_form, owned_items=owned_items,
     #                        selling_form=selling_form)
+
+
+@app.route('/admin', methods=['GET', 'POST'])
+def admin_page():
+    return render_template('index.html')
 
 
 @app.route('/market', methods=['GET', 'POST'])
@@ -77,15 +81,24 @@ def register_page():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
+
     form = LoginForm()
+
     if form.validate_on_submit():
         attempted_user = User.query.filter_by(email_address=form.email_address.data).first()
+
         if attempted_user and attempted_user.check_password_correction(attempted_password=form.password.data):
             login_user(attempted_user)
-            flash(f'Success! You logged in as {attempted_user.username}', category='success')
-            return redirect(url_for('market_page'))
+            user_type = attempted_user.user_type
+
+            if user_type == "1":
+                flash(f'Hello Admin! You logged in as {attempted_user.username}', category='success')
+                return redirect(url_for('admin_page'))
+            else:
+                flash(f'Howdy {attempted_user.username}! Welcome to Moses\' Store ', category='success')
+                return redirect(url_for('market_page'))
         else:
-            flash('Username and password are not match! Please try again', category='danger')
+            flash('Username or password does not match! Please try again', category='danger')
     return render_template('login.html', form=form)
 
 
@@ -94,4 +107,3 @@ def logout_page():
     logout_user()
     flash("You've Been Logged out!", category='info')
     return redirect(url_for("home_page"))
-
