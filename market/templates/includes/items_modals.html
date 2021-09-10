@@ -11,7 +11,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="ModalLabel">
+        <h5 class="modal-title" id="ModalLabel" style="color:white">
           <!-- -->
           {{ item.name }}
         </h5>
@@ -20,10 +20,10 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" style="color:white">
         {{ item.description }}
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer" style="color:white">
         <button type="button" class="btn btn-secondary"
                 data-dismiss="modal">Close
         </button>
@@ -39,7 +39,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="ModalLabel">
+        <h5 class="modal-title" id="ModalLabel" style="color:white">
           <!-- -->
           {{ item.name }}
         </h5>
@@ -53,11 +53,11 @@
         <form method="POST">
           {{ purchase_form.hidden_tag() }}
 
-          <h4 class="text-center">
+          <h4 class="text-center" style="color:white">
             Confirm you Want to buy {{ item.name }} for {{ item.price }}$ ?
           </h4>
           <br>
-          <h6 class="text-center">
+          <h6 class="text-center" style="color:white">
             By clicking Purchase, you will purchase this item.
           </h6>
           <br>

@@ -10,7 +10,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="ModalLabel">
+        <h5 class="modal-title" id="ModalLabel" style="color:white">
           <!-- -->
           {{ owned_item.name }}
         </h5>
@@ -24,11 +24,11 @@
         <form method="POST">
           {{ selling_form.hidden_tag() }}
 
-          <h4 class="text-center">
+          <h4 class="text-center" style="color:white">
             Confirm you Want to sell, you will put {{ owned_item.name }} back on Market ?
           </h4>
           <br>
-          <h6 class="text-center">
+          <h6 class="text-center" style="color:white">
             By clicking Sell, you will Sell this item.
           </h6>
           <br>

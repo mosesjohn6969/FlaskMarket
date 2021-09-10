@@ -3,7 +3,9 @@ from flask import render_template, redirect, url_for, flash, request
 from market.model import Item, User
 from market.forms import RegisterForm, LoginForm, PurchaseItemForm, SellItemForm
 from market import db
-from flask_login import login_user, logout_user, login_required, current_user
+from flask_login import login_user, logout_user, login_required, current_user, login_manager
+
+login_manager.login_view = "login_page"
 
 
 @app.route('/')
@@ -12,14 +14,30 @@ def home_page():
     purchase_form = PurchaseItemForm()
     selling_form = SellItemForm()
     items = Item.query.filter_by(owner=None)
-    owned_items = Item.query.filter_by(owner=current_user.id)
+
     # return render_template('home.html')
-    return render_template('home.html', items=items, purchase_form=purchase_form, owned_items=owned_items, selling_form=selling_form)
+    return render_template('home.html', items=items, purchase_form=purchase_form, selling_form=selling_form)
 
 
 @app.route('/admin', methods=['GET', 'POST'])
 def admin_page():
     return render_template('index.html')
+
+
+@app.route('/cart', methods=['GET', 'POST'])
+def cart_page():
+    purchase_form = PurchaseItemForm()
+    selling_form = SellItemForm()
+    items = Item.query.filter_by(owner=None)
+    return render_template('cart.html', items=items, purchase_form=purchase_form, selling_form=selling_form)
+
+
+@app.route('/checkout', methods=['GET', 'POST'])
+def checkout_page():
+    purchase_form = PurchaseItemForm()
+    selling_form = SellItemForm()
+    items = Item.query.filter_by(owner=None)
+    return render_template('checkout.html', items=items, purchase_form=purchase_form, selling_form=selling_form)
 
 
 @app.route('/market', methods=['GET', 'POST'])
@@ -80,7 +98,6 @@ def register_page():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login_page():
-
     form = LoginForm()
 
     if form.validate_on_submit():
